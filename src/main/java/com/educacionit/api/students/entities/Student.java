@@ -5,7 +5,12 @@ package com.educacionit.api.students.entities;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import org.springframework.data.annotation.Id;
 
 public class Student implements Serializable {
@@ -13,12 +18,25 @@ public class Student implements Serializable {
     @Id
     private String id;
 
+    @NotNull
+    @NotEmpty
+    @Size (min = 5, max = 20)
     private String name;
 
+    @NotNull
+    @NotEmpty
+    @Size (min = 5, max = 20)
     private String lastName;
 
+    @NotNull
+    @NotEmpty
+    @Email
+    @Size (max = 30)
     private String email;
 
+    @NotNull
+    @NotEmpty
+    @Size (max = 20)
     private String mobile;
 
     private LocalDate birthDate;
